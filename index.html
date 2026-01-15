@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annika Nordmark Hoffmann - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .pdf-container {
+            width: 100%;
+            max-width: 1200px;
+            height: 80vh;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .pdf-viewer {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .fallback-link {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .fallback-link a {
+            color: #3498db;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 0.75rem 1.5rem;
+            border: 2px solid #3498db;
+            border-radius: 4px;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .fallback-link a:hover {
+            background-color: #3498db;
+            color: white;
+        }
+
+        footer {
+            background-color: #34495e;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            main {
+                padding: 1rem;
+            }
+
+            .pdf-container {
+                height: 70vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Annika Nordmark Hoffmann</h1>
+        <p>Portfolio</p>
+    </header>
+
+    <main>
+        <div class="pdf-container">
+            <embed class="pdf-viewer" src="portfolio.pdf" type="application/pdf" />
+            <div class="fallback-link">
+                <p>Your browser does not support embedded PDFs.</p>
+                <a href="portfolio.pdf" download>Download Portfolio PDF</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Annika Nordmark Hoffmann. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Check if PDF is supported and show fallback if needed
+        window.addEventListener('load', function() {
+            const embed = document.querySelector('.pdf-viewer');
+            const fallback = document.querySelector('.fallback-link');
+            
+            // Simple check - if embed has no content after load, show fallback
+            setTimeout(function() {
+                if (!embed || embed.offsetHeight === 0) {
+                    fallback.style.display = 'block';
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
