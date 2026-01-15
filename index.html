@@ -114,7 +114,7 @@
 
     <main>
         <div class="pdf-container">
-            <embed class="pdf-viewer" src="portfolio.pdf" type="application/pdf" />
+            <embed class="pdf-viewer" src="portfolio.pdf" type="application/pdf" title="Annika Nordmark Hoffmann Portfolio PDF" aria-label="Portfolio document viewer" />
             <div class="fallback-link">
                 <p>Your browser does not support embedded PDFs.</p>
                 <a href="portfolio.pdf" download>Download Portfolio PDF</a>
@@ -132,12 +132,14 @@
             const embed = document.querySelector('.pdf-viewer');
             const fallback = document.querySelector('.fallback-link');
             
-            // Simple check - if embed has no content after load, show fallback
+            // Delay to allow PDF embed to initialize before checking
+            const EMBED_LOAD_TIMEOUT = 1000; // 1 second
+            
             setTimeout(function() {
                 if (!embed || embed.offsetHeight === 0) {
                     fallback.style.display = 'block';
                 }
-            }, 1000);
+            }, EMBED_LOAD_TIMEOUT);
         });
     </script>
 </body>
